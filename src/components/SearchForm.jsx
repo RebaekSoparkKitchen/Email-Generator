@@ -1,27 +1,27 @@
 import React, { useState } from 'react';
 import DataSourceBox from './DataSourceBox';
 import UrlBox from './UrlBox';
-import SearchButton from './SearchButton';
+import Button from './Button';
 import { makeStyles } from '@material-ui/core/styles';
 import { grey, blue, pink } from '@material-ui/core/colors';
+import Paper from '@material-ui/core/Paper';
+import axios from 'axios';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    // display: 'flex',
-    // flexWrap: 'wrap',
-    // '& > *': {
-    //   margin: theme.spacing(1),
-    //   width: theme.spacing(16),
-    //   height: theme.spacing(16),
-    // },
-    backgroundColor: grey[50],
-    padding: '60px 60px',
-    width: '300px',
-    textAlign: 'center',
-    // border: '3px solid ' + blue[100],
-    borderRadius: '10px',
-    margin: '0 auto',
-    boxShadow: `0 0 10px 1px #888888;`,
+    'text-align': 'center',
+    '& > *': {
+      margin: theme.spacing(1),
+      width: theme.spacing(60),
+      height: theme.spacing(50),
+    },
+  },
+  form: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    // backgroundColor: grey[50],
   },
   urlBox: {
     paddingTop: '30px',
@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function SearchForm() {
+function SearchForm(props) {
   const classes = useStyles();
   const dataSources = [
     {
@@ -55,21 +55,21 @@ function SearchForm() {
     setUrl(event.target.value);
   };
 
-  const handleButton = () => {
-    alert(url);
-  };
-
   return (
     <div className={classes.root}>
-      <div>
-        <DataSourceBox value={source} handleChange={handleDataSource} />
-      </div>
-      <div className={classes.urlBox}>
-        <UrlBox handleChange={handleUrlBox} />
-      </div>
-      <div className={classes.button}>
-        <SearchButton handleClick={handleButton} />
-      </div>
+      <Paper elevation={3} className={classes.form}>
+        <div>
+          <div>
+            <DataSourceBox value={source} handleChange={handleDataSource} />
+          </div>
+          <div className={classes.urlBox}>
+            <UrlBox handleChange={handleUrlBox} />
+          </div>
+          <div className={classes.button}>
+            <Button name={'search'} handleClick={props.search} />
+          </div>
+        </div>
+      </Paper>
     </div>
   );
 }
