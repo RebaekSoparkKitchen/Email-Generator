@@ -5,7 +5,21 @@ import Button from './Button';
 import { makeStyles } from '@material-ui/core/styles';
 import { grey, blue, pink } from '@material-ui/core/colors';
 import Paper from '@material-ui/core/Paper';
-import axios from 'axios';
+import http from '../services/httpService';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+const handleSearch = async () => {
+  const obj = { url: 'https://events.sap.cn/w-service/ws2/' };
+  try {
+    const { data: post } = await http.get('http://localhost:8080/api/test');
+    console.log(post);
+  } catch (ex) {
+    if (ex.response && ex.response.status === 404) {
+      toast.error('the data not found');
+    }
+  }
+};
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -66,7 +80,7 @@ function SearchForm(props) {
             <UrlBox handleChange={handleUrlBox} />
           </div>
           <div className={classes.button}>
-            <Button name={'search'} handleClick={props.search} />
+            <Button name={'search'} handleClick={handleSearch} />
           </div>
         </div>
       </Paper>
