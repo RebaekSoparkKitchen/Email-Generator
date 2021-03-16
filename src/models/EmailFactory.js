@@ -1,12 +1,13 @@
 /*
+import { render } from '@testing-library/react';
  * @Description:
  * @Author: FlyingRedPig
  * @Date: 2021-03-14 16:39:33
  * @LastEditors: FlyingRedPig
- * @LastEditTime: 2021-03-14 23:40:19
+ * @LastEditTime: 2021-03-16 16:15:44
  */
-const data = require('./data/logistical.json');
-
+// const data = require('./data/logistical.json');
+const fs = require('fs');
 class EmailFactory {
   constructor(data, team) {
     this.data = data[0];
@@ -15,7 +16,7 @@ class EmailFactory {
 
   // 为报名的 url 加上参数
   urlProcess = (url, code) => {
-    return `${url}?channel=edm&campaigncode=${code}`;
+    return `${url}?pk_source=edminv&campaigncode=${code}`;
   };
 
   emailSubject = (subject) => {
@@ -67,13 +68,15 @@ class EmailFactory {
     const email = {};
     const data = this.data;
     email.code = data.code;
-    email.team = data.sub_forum;
+    email.team = this.team;
     email.subject = this.emailSubject(data.title);
+    email.meetingTime = `${data.date} ${data.start_time} - ${data.end_time}`;
+    email.header = {};
+    email.button = { text: '立即报名', color: 'black' };
     email.banner = data.banners[0].image_mobile;
     email.title = data.title;
     email.meetingUrl = this.urlProcess(data.url, data.code);
     email.mainText = data.intro;
-    email.meetingTime = `${data.date} ${data.start_time} - ${data.end_time}`;
     email.schedule = [];
     data.agendas.forEach((value) => {
       email.schedule.push(this.scheduleProcess(value));
@@ -83,6 +86,13 @@ class EmailFactory {
   };
 }
 
+const data = require('./origin_data/imc.json');
+
 const e = new EmailFactory(data, 'gb');
 const a = e.create();
-console.log(a.schedule);
+// console.log(a.schedule[0][0].guest);
+
+const render = require('./Render');
+
+render(a);
+module.exports = EmailFactory;

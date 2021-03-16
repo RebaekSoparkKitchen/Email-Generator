@@ -12,7 +12,7 @@ import 'react-toastify/dist/ReactToastify.css';
 const handleSearch = async () => {
   const obj = { url: 'https://events.sap.cn/w-service/ws2/' };
   try {
-    const { data: post } = await http.get('http://localhost:8080/api/test');
+    const { data: post } = await http.get('http://localhost:5000/');
     console.log(post);
   } catch (ex) {
     if (ex.response && ex.response.status === 404) {
