@@ -13,7 +13,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function SpanningTable() {
+export default function ResultTable(props) {
   const classes = useStyles();
 
   return (
@@ -22,7 +22,15 @@ export default function SpanningTable() {
         <TableBody>
           <TableRow>
             <TableCell width="30%">Email Name</TableCell>
-            <TableCell align="left">test name</TableCell>
+            <TableCell align="left">{props.data.title}</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell width="30%">CRM Code</TableCell>
+            <TableCell align="left">{props.data.code}</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell width="30%">Meeting Time</TableCell>
+            <TableCell align="left">{props.data.meetingTime}</TableCell>
           </TableRow>
         </TableBody>
       </Table>

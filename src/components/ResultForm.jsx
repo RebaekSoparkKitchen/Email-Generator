@@ -34,10 +34,10 @@ function ResultForm(props) {
       <Paper elevation={3} className={classes.form}>
         <div>
           <div>
-            <ResultTable />
+            <ResultTable data={props.data} />
           </div>
           <div className={classes.button}>
-            <Button name="Download" />
+            <Button name="Download" handleClick={props.handleDownload} />
           </div>
         </div>
       </Paper>

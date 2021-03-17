@@ -1,0 +1,61 @@
+[
+  {
+    "id": 85,
+    "slug": "wd2",
+    "code": "CRM-CN21-DSC-WEBSTC1",
+    "title": "SAP Teamcenter 打造闭环数字主线，为研发赋能",
+    "sub_title": "",
+    "date": "2021年03月17日",
+    "start_time": "14:00",
+    "end_time": "15:00",
+    "url": "https://events.sap.cn/w-dsc/wd2/",
+    "intro": "<p>在制造企业中，由于信息孤岛的存在，研发、制造、供应链、销售、运营等业务部门难以获得统一、一致、实时的信息，难以有效支持高效、准确的业务决策。</p><p>SAP 和Siemens 于2020年宣布进行战略合作，以协同Siemens在研发领域的优势和SAP在企业全面业务领域的优势，构成统一数字主线，为企业实现从创意、产品研发、验证、制造、供应链，到运营的端到端业务提供支持。从而达到缩短投资回报周期、实时供应链、可持续产品的目标。</p><p>若想了解更多，3月17日请来SAP直播间，看SAP数字化供应链业务发展总监赵慧设分享SAP与Teamcenter集成构成统一的数字主线，赋能企业研发业务。一定能带给你别样的启发。千万不要错过！</p>",
+    "industry": "跨行业",
+    "solution": "物联网与数字化供应链",
+    "sub_forum": "智慧供应链",
+    "activity": "线上",
+    "mail_banner": "https://sapevent.oss-cn-shanghai.aliyuncs.com/media/original_images/1600_400_1_XcyqNVx.jpg",
+    "agendas": [
+      {
+        "name": "3月17日",
+        "items": [
+          {
+            "content": "SAP Teamcenter 构建统一的数字主线，为研发赋能",
+            "start": "14:00",
+            "end": "15:00",
+            "speakers": [
+              {
+                "name": "赵慧设",
+                "titles": ["SAP数字化供应链业务发展总监"],
+                "companies": [],
+                "intros": [
+                  "<p>曾就职于多家知名企业从事智能制造咨询规划，IT规划，研发业务咨询和系统实施工作。在PLM领域有超过13年经验，帮助多家知名企业成功完成研发业务转型。</p>"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "banners": [
+      {
+        "name": "",
+        "image": "https://sapevent.oss-cn-shanghai.aliyuncs.com/media/original_images/3840_400_1_PJTEVw2.jpg",
+        "image_mobile": "https://sapevent.oss-cn-shanghai.aliyuncs.com/media/original_images/1500_400_1_0wDkISH.jpg"
+      }
+    ],
+    "speakers": [
+      {
+        "name": "赵慧设",
+        "titles": ["SAP数字化供应链业务发展总监"],
+        "companies": [],
+        "intros": [
+          "<p>曾就职于多家知名企业从事智能制造咨询规划，IT规划，研发业务咨询和系统实施工作。在PLM领域有超过13年经验，帮助多家知名企业成功完成研发业务转型。</p>"
+        ]
+      }
+    ],
+    "thumbnail": "https://sapevent.oss-cn-shanghai.aliyuncs.com/media/original_images/560_320_1_ysM7hun.jpg",
+    "thumbnail_mobile": "https://sapevent.oss-cn-shanghai.aliyuncs.com/media/original_images/560_320_1_ysM7hun.jpg",
+    "qr": "https://sapevent.oss-cn-shanghai.aliyuncs.com/media/qr_images/2764_wd2"
+  }
+]

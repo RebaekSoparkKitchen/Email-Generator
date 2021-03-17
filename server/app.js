@@ -1,23 +1,17 @@
 /*
-import { axios } from 'axios';
- * @Description:
- * @Author: FlyingRedPig
- * @Date: 2021-03-10 12:01:37
- * @LastEditors: FlyingRedPig
- * @LastEditTime: 2021-03-17 16:23:03
- */
-/*
  * @Description:
  * @Author: FlyingRedPig
  * @Date: 2021-01-15 23:23:42
  * @LastEditors: FlyingRedPig
- * @LastEditTime: 2021-03-09 17:42:05
+ * @LastEditTime: 2021-03-17 20:30:27
  * @FilePath: \practice\express-demo\index.js
  */
 const Joi = require('joi');
 const express = require('express');
 const app = express();
 const axios = require('axios');
+const EmailFactory = require('./models/EmailFactory');
+const render = require('./models/Render');
 
 app.use(express.json());
 app.use(function (req, res, next) {
@@ -30,11 +24,11 @@ app.use(function (req, res, next) {
 });
 
 app.get('/', (req, res) => {
-  res.send('hello world!');
+  res.download('hello.txt');
 });
 
 app.post('/api/content', async (req, res) => {
-  const { data: post } = await axios.get(
+  const { data: content } = await axios.get(
     `https://events.sap.cn/home/meeting-info/?slug=${req.body.slug}`,
     {
       auth: {
@@ -43,13 +37,22 @@ app.post('/api/content', async (req, res) => {
       },
     }
   );
-  res.send(post);
+  const team = req.body.team;
+  const factory = new EmailFactory(content, team);
+  const EmailData = factory.create();
+  render(EmailData);
+  res.send(factory.create());
 });
 
-app.post('/api/download', async (req, res) => {
-  const data = req.body;
-  const file = `${__dirname}/models/dist/${data.subject}.html`;
-  res.download(file);
+app.post('/api/files', (req, res) => {
+  const data = req.body.data;
+  const file = `http://localhost:5000/api/download/${data.code}`;
+  res.send(file); // Set disposition and send it.
+});
+
+app.get('/api/download/:code', (req, res) => {
+  const file = `${__dirname}/models/dist/${req.params.code}.html`;
+  res.download(file); // Set disposition and send it.
 });
 
 app.post('/api/courses', (req, res) => {

@@ -1,26 +1,10 @@
-import React, { useState } from 'react';
-import DataSourceBox from './DataSourceBox';
+import React from 'react';
+import TeamBox from './TeamBox';
 import UrlBox from './UrlBox';
 import Button from './Button';
 import { makeStyles } from '@material-ui/core/styles';
-import { grey, blue, pink } from '@material-ui/core/colors';
 import Paper from '@material-ui/core/Paper';
-import http from '../services/httpService';
-import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
-const handleSearch = async () => {
-  try {
-    const { data: post } = await http.post('/api/content', {
-      slug: 'logistical',
-    });
-    console.log(post);
-  } catch (ex) {
-    if (ex.response && ex.response.status === 404) {
-      toast.error('the data not found');
-    }
-  }
-};
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -48,40 +32,21 @@ const useStyles = makeStyles((theme) => ({
 
 function SearchForm(props) {
   const classes = useStyles();
-  const dataSources = [
-    {
-      value: 'sapphire',
-      label: 'SAP CN Event Webinar',
-    },
-    {
-      value: 'gb',
-      label: 'GB Webinar',
-    },
-  ];
-
-  const [url, setUrl] = useState('');
-  const [source, setSource] = useState(dataSources[0].value);
-
-  const handleDataSource = (event) => {
-    setSource(event.target.value);
-  };
-
-  const handleUrlBox = (event) => {
-    setUrl(event.target.value);
-  };
 
   return (
     <div className={classes.root}>
       <Paper elevation={3} className={classes.form}>
         <div>
           <div>
-            <DataSourceBox value={source} handleChange={handleDataSource} />
+            <TeamBox value={props.value} handleChange={props.handleTeam} />
           </div>
           <div className={classes.urlBox}>
-            <UrlBox handleChange={handleUrlBox} />
+            <UrlBox handleChange={props.handleUrlBox} />
           </div>
-          <div className={classes.button}>
-            <Button name={'search'} handleClick={handleSearch} />
+          <div>
+            <div className={classes.button}>
+              <Button name={'search'} handleClick={props.handleSearch} />
+            </div>
           </div>
         </div>
       </Paper>
