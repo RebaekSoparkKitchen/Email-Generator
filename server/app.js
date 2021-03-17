@@ -3,7 +3,7 @@
  * @Author: FlyingRedPig
  * @Date: 2021-01-15 23:23:42
  * @LastEditors: FlyingRedPig
- * @LastEditTime: 2021-03-17 20:30:27
+ * @LastEditTime: 2021-03-17 22:15:30
  * @FilePath: \practice\express-demo\index.js
  */
 const Joi = require('joi');
@@ -46,7 +46,7 @@ app.post('/api/content', async (req, res) => {
 
 app.post('/api/files', (req, res) => {
   const data = req.body.data;
-  const file = `http://localhost:5000/api/download/${data.code}`;
+  const file = `http://localhost:5000/api/download/${data.title}`;
   res.send(file); // Set disposition and send it.
 });
 

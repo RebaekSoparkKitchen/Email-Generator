@@ -4,9 +4,8 @@ import { render } from '@testing-library/react';
  * @Author: FlyingRedPig
  * @Date: 2021-03-14 16:39:33
  * @LastEditors: FlyingRedPig
- * @LastEditTime: 2021-03-16 16:15:44
+ * @LastEditTime: 2021-03-17 22:02:31
  */
-// const data = require('./data/logistical.json');
 const fs = require('fs');
 class EmailFactory {
   constructor(data, team) {
@@ -86,13 +85,4 @@ class EmailFactory {
   };
 }
 
-const data = require('./origin_data/imc.json');
-
-const e = new EmailFactory(data, 'gb');
-const a = e.create();
-// console.log(a.schedule[0][0].guest);
-
-const render = require('./Render');
-
-render(a);
 module.exports = EmailFactory;

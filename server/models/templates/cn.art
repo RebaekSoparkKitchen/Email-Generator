@@ -1174,10 +1174,14 @@
                                                             </td>
                                                             <td>
                                                               {{if $value.guest.length != 0}}
-                                                              {{@$value.guest[0].name}}
-                                                              {{/if}}
-                                                              {{if $value.guest.length != 0}}
-                                                              <br>{{@$value.guest[0].title}}
+                                                              {{set guests = $value.guest}}
+                                                                {{each guests}}
+                                                                  {{@$value.name}}
+                                                                  <br>{{@$value.title}}
+                                                                  {{if $index != guests.length}}
+                                                                    <br>
+                                                                  {{/if}}
+                                                                {{/each}}
                                                               {{/if}}
                                                             </td>
                                                           </tr>
