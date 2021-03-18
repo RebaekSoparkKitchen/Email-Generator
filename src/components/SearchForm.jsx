@@ -38,7 +38,7 @@ function SearchForm(props) {
       <Paper elevation={3} className={classes.form}>
         <div>
           <div>
-            <TeamBox value={props.value} handleChange={props.handleTeam} />
+            <TeamBox value={props.value} handleTeam={props.handleTeam} />
           </div>
           <div className={classes.urlBox}>
             <UrlBox handleChange={props.handleUrlBox} />
