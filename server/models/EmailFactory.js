@@ -4,7 +4,7 @@ import { render } from '@testing-library/react';
  * @Author: FlyingRedPig
  * @Date: 2021-03-14 16:39:33
  * @LastEditors: FlyingRedPig
- * @LastEditTime: 2021-03-19 16:20:59
+ * @LastEditTime: 2021-03-19 19:29:08
  */
 const fs = require('fs');
 const cheerio = require('cheerio');
@@ -91,7 +91,7 @@ class EmailFactory {
     email.banner = data.banners[0].image_mobile;
     email.title = data.title;
     email.meetingUrl = this.urlProcess(data.url, data.code);
-    email.mainText = this.textProcess(data.intro);
+    email.mainText = data.intro;
     email.schedule = [];
     data.agendas.forEach((value) => {
       email.schedule.push(this.scheduleProcess(value));
