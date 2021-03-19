@@ -4,13 +4,12 @@ import { render } from '@testing-library/react';
  * @Author: FlyingRedPig
  * @Date: 2021-03-14 16:39:33
  * @LastEditors: FlyingRedPig
- * @LastEditTime: 2021-03-17 22:02:31
+ * @LastEditTime: 2021-03-19 12:51:30
  */
 const fs = require('fs');
 class EmailFactory {
-  constructor(data, team) {
+  constructor(data) {
     this.data = data[0];
-    this.team = team;
   }
 
   // 为报名的 url 加上参数
@@ -63,11 +62,11 @@ class EmailFactory {
     return guests;
   };
 
-  create = () => {
+  create = (team, qr) => {
     const email = {};
     const data = this.data;
     email.code = data.code;
-    email.team = this.team;
+    email.team = team;
     email.subject = this.emailSubject(data.title);
     email.meetingTime = `${data.date} ${data.start_time} - ${data.end_time}`;
     email.header = {};
@@ -81,6 +80,7 @@ class EmailFactory {
       email.schedule.push(this.scheduleProcess(value));
     });
     email.guests = this.guestProcess(data.speakers);
+    email.qr = qr;
     return email;
   };
 }

@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import ResultTable from './ResultTable';
 import Button from './Button';
 import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
-import { grey } from '@material-ui/core/colors';
 
 const useStyles = makeStyles((theme) => ({
   root: {

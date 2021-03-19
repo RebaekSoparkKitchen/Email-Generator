@@ -3,7 +3,7 @@
  * @Author: FlyingRedPig
  * @Date: 2021-01-15 23:23:42
  * @LastEditors: FlyingRedPig
- * @LastEditTime: 2021-03-17 22:15:30
+ * @LastEditTime: 2021-03-19 12:56:23
  * @FilePath: \practice\express-demo\index.js
  */
 const Joi = require('joi');
@@ -13,6 +13,12 @@ const axios = require('axios');
 const EmailFactory = require('./models/EmailFactory');
 const render = require('./models/Render');
 
+const emailProcess = (req, res, data) => {
+  const factory = new EmailFactory(data.content, data.team, data.qr);
+  const EmailData = factory.create();
+  render(EmailData);
+  res.send(factory.create());
+};
 app.use(express.json());
 app.use(function (req, res, next) {
   res.header('Access-Control-Allow-Origin', 'https://events.sap.cn'); // update to match the domain you will make the request from
@@ -24,24 +30,35 @@ app.use(function (req, res, next) {
 });
 
 app.get('/', (req, res) => {
-  res.download('hello.txt');
+  res.send('hello.txt');
 });
 
 app.post('/api/content', async (req, res) => {
+  const options = {
+    auth: {
+      username: 'sapuser',
+      password: 'secret_189',
+    },
+  };
+
+  // 请求页面数据
   const { data: content } = await axios.get(
     `https://events.sap.cn/home/meeting-info/?slug=${req.body.slug}`,
-    {
-      auth: {
-        username: 'sapuser',
-        password: 'secret_189',
-      },
-    }
+    options
   );
-  const team = req.body.team;
-  const factory = new EmailFactory(content, team);
-  const EmailData = factory.create();
-  render(EmailData);
-  res.send(factory.create());
+
+  const factory = new EmailFactory(content);
+  const url = factory.urlProcess(factory.data.url, factory.data.code);
+
+  // 请求二维码
+  const { data: qrData } = await axios.post(
+    'https://events.sap.cn/home/generate-qr/',
+    `url=${url}`,
+    options
+  );
+  const emailData = factory.create(req.body.team, qrData.qr);
+  render(emailData);
+  res.send(emailData);
 });
 
 app.post('/api/files', (req, res) => {

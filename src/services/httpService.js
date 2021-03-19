@@ -3,7 +3,7 @@
  * @Author: FlyingRedPig
  * @Date: 2021-03-10 14:56:06
  * @LastEditors: FlyingRedPig
- * @LastEditTime: 2021-03-10 16:40:51
+ * @LastEditTime: 2021-03-18 14:12:42
  */
 import axios from 'axios';
 import { toast } from 'react-toastify';
@@ -17,7 +17,7 @@ axios.interceptors.response.use(null, (error) => {
     error.response.status <= 500;
   if (!expectedError) {
     logger.log(error);
-    toast.error('An expected error occurred');
+    toast.error('An unexpected error occurred');
   }
   return Promise.reject(error);
 });
