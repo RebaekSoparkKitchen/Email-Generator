@@ -12,6 +12,7 @@
     "@testing-library/user-event": "^12.1.10",
     "art-template": "^4.13.2",
     "axios": "^0.21.1",
+    "cheerio": "^1.0.0-rc.5",
     "express": "^4.17.1",
     "gulp": "^4.0.2",
     "gulp-art-template": "^0.0.4",

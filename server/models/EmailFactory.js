@@ -4,9 +4,10 @@ import { render } from '@testing-library/react';
  * @Author: FlyingRedPig
  * @Date: 2021-03-14 16:39:33
  * @LastEditors: FlyingRedPig
- * @LastEditTime: 2021-03-19 12:51:30
+ * @LastEditTime: 2021-03-19 16:20:59
  */
 const fs = require('fs');
+const cheerio = require('cheerio');
 class EmailFactory {
   constructor(data) {
     this.data = data[0];
@@ -62,6 +63,22 @@ class EmailFactory {
     return guests;
   };
 
+  //helper method for parse intro text
+  textparser = (str) => {
+    const $ = cheerio.load(str);
+    const result = [];
+    $('p').each(function (i, ele) {
+      result.push($(this).text());
+    });
+    return result;
+  };
+
+  textProcess = (str) => {
+    const contentList = this.textparser(str);
+    const newStr = contentList.join('<br><br>');
+    return `<p>${newStr}</p>`;
+  };
+
   create = (team, qr) => {
     const email = {};
     const data = this.data;
@@ -74,7 +91,7 @@ class EmailFactory {
     email.banner = data.banners[0].image_mobile;
     email.title = data.title;
     email.meetingUrl = this.urlProcess(data.url, data.code);
-    email.mainText = data.intro;
+    email.mainText = this.textProcess(data.intro);
     email.schedule = [];
     data.agendas.forEach((value) => {
       email.schedule.push(this.scheduleProcess(value));

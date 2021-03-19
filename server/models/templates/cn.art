@@ -1022,7 +1022,7 @@
                                     <tbody>
                                       <tr>
                                         <td>
-                                         {{@mainText}}
+                                         <div style="color: rgb(0,0,0);">{{@mainText}}</div>
                                         </td>
                                       </tr>
                                     </tbody>
@@ -1124,7 +1124,7 @@
                                                             color: rgb(0, 0, 0);
                                                           "
                                                         >
-                                                          <b>会议时间：</b>{{meetingTime}}<br />
+                                                          <b>会议时间：</b><div style="color: rgb(0,0,0);">{{meetingTime}}</div><br />
                                                           
                                                           <b>日程安排：</b>
                                                         </div>
@@ -1153,6 +1153,7 @@
                                                             cellspacing: 0;
                                                             font-size: 15px;
                                                             border-collapse: collapse;
+                                                            color: rgb(0,0,0);
                                                           "
                                                         >
                                                           <tr
@@ -1176,8 +1177,13 @@
                                                               {{if $value.guest.length != 0}}
                                                               {{set guests = $value.guest}}
                                                                 {{each guests}}
+                                                                {{if $index != 0}}
+                                                                    <br>
+                                                                  {{/if}}
+
                                                                   {{@$value.name}}
                                                                   <br>{{@$value.title}}
+
                                                                   {{if $index != guests.length}}
                                                                     <br>
                                                                   {{/if}}
@@ -1294,7 +1300,6 @@
                                                               sans-serif;
                                                             line-height: 22px;
                                                             text-align: left;
-                                                            color: rgb(0, 0, 0);
                                                           "
                                                         >
                                                           <table
@@ -1313,11 +1318,7 @@
                                                                         sans-serif;
                                                                       font-size: 17px;
                                                                       line-height: 20px;
-                                                                      color: rgb(
-                                                                        0,
-                                                                        0,
-                                                                        0
-                                                                      );
+                                                                      color: rgb(0,0,0);
                                                                     "
                                                                   >
                                                                     <strong
@@ -1328,14 +1329,14 @@
                                                                   {{each guests}}
                                                                   <p>
                                                                     <strong
-                                                                      >{{@$value.name}}</strong
+                                                                      ><span style="color: rgb(0,0,0);">{{@$value.name}}</span></strong
                                                                     ><strong
                                                                       >&nbsp;
-                                                                      {{@$value.title}}</strong
+                                                                      <span style="color: rgb(0,0,0);">{{@$value.title}}</span></strong
                                                                     >
                                                                   </p>
                                                                   <p>
-                                                                    {{@$value.introduction}}
+                                                                    <span style="color: rgb(0,0,0);">{{@$value.introduction}}</span>
                                                                   </p>
                                                                   <p>
                                                                     <strong
@@ -1353,7 +1354,7 @@
                                                                 </td>
                                                               </tr>
                                                               <tr>
-                                                                <td align="center" style="text-align:center"><span style="font-size: 15px">SAP 诚挚期待您的参与！</span></td>
+                                                                <td align="center" style="text-align:center"><span style="font-size: 15px; color: rgb(0,0,0)">SAP 诚挚期待您的参与！</span></td>
                                                                 </tr>
                                                                 <tr>
                                                                 <td align="center">
@@ -1361,7 +1362,7 @@
                                                                 </td>
                                                                 </tr>
                                                                 <tr>
-                                                                <td align="center"><span style="font-size: 15px">扫描二维码，注册参会</span></td>
+                                                                <td align="center"><span style="font-size: 15px; color: rgb(0,0,0)">扫描二维码，注册参会</span></td>
                                                                 </tr>
                                                             </tbody>
                                                           </table>
