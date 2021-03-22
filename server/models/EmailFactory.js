@@ -4,7 +4,7 @@ import { render } from '@testing-library/react';
  * @Author: FlyingRedPig
  * @Date: 2021-03-14 16:39:33
  * @LastEditors: FlyingRedPig
- * @LastEditTime: 2021-03-22 11:53:24
+ * @LastEditTime: 2021-03-22 17:48:29
  */
 const fs = require('fs');
 const cheerio = require('cheerio');
@@ -64,20 +64,23 @@ class EmailFactory {
     return guests;
   };
 
-  //helper method for parse intro text
-  textparser = (str) => {
-    const $ = cheerio.load(str);
-    const result = [];
-    $('p').each(function (i, ele) {
-      result.push($(this).text());
-    });
-    return result;
-  };
-
+  //helper method for padding of p tag
   textProcess = (str) => {
-    const contentList = this.textparser(str);
-    const newStr = contentList.join('<br><br>');
-    return `<p>${newStr}</p>`;
+    // null & false to avoid auto wrap of html tag in $.html()
+    const $ = cheerio.load(str, null, false);
+    const margin = '15px';
+    const left = '30px';
+
+    $('p').each(function (i, ele) {
+      const prevNode = $(this).prev()[0];
+      if (prevNode && prevNode.tagName == 'p') {
+        $(this).css('padding-top', margin);
+      }
+    });
+    $('ol').css('padding', `${margin} 0px`);
+    $('ol').css('padding-left', `${left}`);
+    $('ul').css('padding', `${margin} 0px`);
+    return $.html();
   };
 
   create = (team, qr) => {
@@ -93,8 +96,7 @@ class EmailFactory {
     email.banner = data.banners[0].image_mobile;
     email.title = data.title;
     email.meetingUrl = this.urlProcess(this.url, data.code);
-    console.log(email.meetingUrl);
-    email.mainText = data.intro;
+    email.mainText = this.textProcess(data.intro);
     email.schedule = [];
     data.agendas.forEach((value) => {
       email.schedule.push(this.scheduleProcess(value));

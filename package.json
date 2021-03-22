@@ -17,6 +17,8 @@
     "gulp": "^4.0.2",
     "gulp-art-template": "^0.0.4",
     "gulp-art-tpl": "^1.2.0",
+    "gulp-cached": "^1.1.1",
+    "gulp-cheerio": "^1.0.0",
     "gulp-json-editor": "^2.5.4",
     "gulp-juice": "^0.1.0",
     "gulp-pangu": "^0.0.1",

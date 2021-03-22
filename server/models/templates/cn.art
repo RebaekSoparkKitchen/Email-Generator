@@ -1174,10 +1174,10 @@
                                                             class="tr-standard"
                                                           >
                                                             <td>
-                                                              <span style="color: rgb(0,0,0);font-size: 16px;">{{@$value.time}}</span>
+                                                              <span style="color: rgb(0,0,0);font-size: 16px;line-height: 150%;">{{@$value.time}}</span>
                                                             </td>
                                                             <td>
-                                                              <span style="color: rgb(0,0,0);font-size: 16px;">{{@$value.content}}</span>
+                                                              <span style="color: rgb(0,0,0);font-size: 16px;line-height: 150%;">{{@$value.content}}</span>
                                                             </td>
                                                             <td>
                                                               {{if $value.guest.length != 0}}
@@ -1186,10 +1186,10 @@
                                                                 {{if $index != 0}}
                                                                     <br>
                                                                   {{/if}}
-                                                                  <div style="color: rgb(0,0,0); padding-bottom: 3px; font-size: 16px;">
+                                                                  <div style="color: rgb(0,0,0); padding-bottom: 3px; font-size: 16px;line-height: 150%;">
                                                                   {{@$value.name}}
                                                                   </div>
-                                                                  <div style="color: rgb(0,0,0);font-size: 16px;">
+                                                                  <div style="color: rgb(0,0,0);font-size: 16px;line-height: 180%;">
                                                                   {{@$value.title}}
                                                                   </div>
                                                                  
@@ -1337,22 +1337,22 @@
                                                                  
                                                                   </div>
                                                                   {{each guests}}
-                                                                  <p style="margin-bottom:5px;">
+                                                                  <div style="margin-bottom:5px;">
                                                                     <strong
                                                                       ><span style="color: rgb(0,0,0);font-size: 16px;line-height: 180%;">{{@$value.name}}</span></strong
                                                                     ><strong
                                                                       >&nbsp;
                                                                       <span style="color: rgb(0,0,0);font-size: 16px;line-height: 180%;">{{@$value.title}}</span></strong
                                                                     >
-                                                                  </p>
-                                                                  <p style="color: rgb(0,0,0);">
+                                                                  </div>
+                                                                  <div style="color: rgb(0,0,0);">
                                                                     <span style="color: rgb(0,0,0);font-size: 16px;line-height: 180%;">{{@$value.introduction}}</span>
-                                                                  </p>
-                                                                  <p>
+                                                                  </div>
+                                                                  <div>
                                                                     <strong
                                                                       >&nbsp;</strong
                                                                     >
-                                                                  </p>
+                                                                  </div>
                                                                   {{/each}}             
                                                                 </td>
                                                               </tr>
