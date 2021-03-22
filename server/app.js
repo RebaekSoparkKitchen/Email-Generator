@@ -3,7 +3,7 @@
  * @Author: FlyingRedPig
  * @Date: 2021-01-15 23:23:42
  * @LastEditors: FlyingRedPig
- * @LastEditTime: 2021-03-19 12:56:23
+ * @LastEditTime: 2021-03-22 11:53:38
  * @FilePath: \practice\express-demo\index.js
  */
 const Joi = require('joi');
@@ -48,7 +48,7 @@ app.post('/api/content', async (req, res) => {
   );
 
   const factory = new EmailFactory(content);
-  const url = factory.urlProcess(factory.data.url, factory.data.code);
+  const url = factory.urlProcess(factory.url, factory.data.code);
 
   // 请求二维码
   const { data: qrData } = await axios.post(

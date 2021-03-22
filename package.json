@@ -18,6 +18,7 @@
     "gulp-art-template": "^0.0.4",
     "gulp-art-tpl": "^1.2.0",
     "gulp-json-editor": "^2.5.4",
+    "gulp-juice": "^0.1.0",
     "gulp-pangu": "^0.0.1",
     "gulp-rename": "^2.0.0",
     "joi": "^17.4.0",

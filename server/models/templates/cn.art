@@ -35,7 +35,7 @@
     <![endif]-->
 
     <style type="text/css">
-      .tr-firstline-gb td {
+      .tr-firstline-gold td {
         border: 1.5px solid black;
         padding: 3px 3px 3px 3px;
         background-color: #f0ab00;
@@ -76,7 +76,16 @@
       }
 
       ul {
-        list-style-type: square;
+        list-style-type: sqaure;
+        margin: 0;
+        padding-left: 18px;
+        mso-padding-left-alt: 18px;
+        -webkit-padding-start: 18px;
+        -webkit-padding-end: 18px;
+      }
+
+      ol {
+        list-style-type: sqaure;
         margin: 0;
         padding-left: 18px;
         mso-padding-left-alt: 18px;
@@ -173,12 +182,12 @@
       }
 
       td table td table td {
-        font-family: Arial, sans-serif;
+        font-family: 'Microsoft YaHei',Arial, sans-serif;
         color: #000000;
       }
 
       table.text table td {
-        font-family: Arial, sans-serif;
+        font-family: 'Microsoft YaHei',Arial, sans-serif;
       }
 
       a.no-underline {
@@ -1002,13 +1011,14 @@
                           <tbody>
                             <tr>
                               <td align="left" class="mobile-wrapper">
-                                  <b>尊敬的嘉宾：</b> <br><br>                             
+                                  <span style="font-family: Microsoft YaHei, Arial,
+                                      Helvetica, sans-serif;font-size: 16px"><strong>尊敬的嘉宾：</strong></span> <br><br>                             
                                 <div
                                   style="
                                     font-family: 'Microsoft YaHei', Arial,
                                       Helvetica, sans-serif;
                                     font-size: 16px;
-                                    line-height: 20px;
+                                    line-height:180%;
                                     color: rgb(0, 0, 0);
                                   "
                                 >
@@ -1019,7 +1029,7 @@
                                     <tbody>
                                       <tr>
                                         <td>
-                                         <div style="color: rgb(0,0,0);">{{@mainText}}</div>
+                                         <div style="font-size: 16px">{{@mainText}}</div>
                                         </td>
                                       </tr>
                                     </tbody>
@@ -1110,13 +1120,12 @@
                                                       <td align="left">
                                                         <div
                                                           style="
-                                                            font-size: 17px;
+                                                            font-size: 16px;
                                                             font-family: 'Microsoft
                                                                 YaHei'
                                                                 ， Arial,
                                                               Helvetica,
                                                               sans-serif;
-                                                            line-height: 22px;
                                                             text-align: left;
                                                             color: rgb(0, 0, 0);
                                                           "
@@ -1148,27 +1157,27 @@
                                                           class="responsive-table"
                                                           style="
                                                             cellspacing: 0;
-                                                            font-size: 15px;
+                                                            font-size: 16px;
                                                             border-collapse: collapse;
                                                             color: rgb(0,0,0);
                                                           "
                                                         >
                                                           <tr
-                                                            class="tr-firstline-gb"
+                                                            class="tr-firstline-gold"
                                                           >
-                                                            <td width="20%"><span style="color: rgb(0,0,0);">时间</span></td>
-                                                            <td width="40%"><span style="color: rgb(0,0,0);">内容安排</span></td>
-                                                            <td width="40%"><span style="color: rgb(0,0,0);">演讲嘉宾</span></td>
+                                                            <td width="20%"><span style="color: rgb(0,0,0);font-size: 16px;">时间</span></td>
+                                                            <td width="40%"><span style="color: rgb(0,0,0);font-size: 16px;">内容安排</span></td>
+                                                            <td width="40%"><span style="color: rgb(0,0,0);font-size: 16px;">演讲嘉宾</span></td>
                                                           </tr>
                                                           {{each schedule[0]}}
                                                           <tr
                                                             class="tr-standard"
                                                           >
                                                             <td>
-                                                              <span style="color: rgb(0,0,0);">{{@$value.time}}</span>
+                                                              <span style="color: rgb(0,0,0);font-size: 16px;">{{@$value.time}}</span>
                                                             </td>
                                                             <td>
-                                                              <span style="color: rgb(0,0,0);">{{@$value.content}}</span>
+                                                              <span style="color: rgb(0,0,0);font-size: 16px;">{{@$value.content}}</span>
                                                             </td>
                                                             <td>
                                                               {{if $value.guest.length != 0}}
@@ -1177,16 +1186,13 @@
                                                                 {{if $index != 0}}
                                                                     <br>
                                                                   {{/if}}
-                                                                  <span style="color: rgb(0,0,0);">
+                                                                  <div style="color: rgb(0,0,0); padding-bottom: 3px; font-size: 16px;">
                                                                   {{@$value.name}}
-                                                                  </span>
-                                                                  <br>
-                                                                  <span style="color: rgb(0,0,0);">
+                                                                  </div>
+                                                                  <div style="color: rgb(0,0,0);font-size: 16px;">
                                                                   {{@$value.title}}
-                                                                  </span>
-                                                                  {{if $index != guests.length}}
-                                                                    <br>
-                                                                  {{/if}}
+                                                                  </div>
+                                                                 
                                                                 {{/each}}
                                                               {{/if}}
                                                             </td>
@@ -1294,11 +1300,11 @@
                                                       <td align="left">
                                                         <div
                                                           style="
-                                                            font-size: 17px;
+                                                            font-size: 16px;
                                                             font-family: 'Microsoft YaHei',
                                                               Arial, Helvetica,
                                                               sans-serif;
-                                                            line-height: 22px;
+                                                            line-height: 180%;
                                                             text-align: left;
                                                           "
                                                         >
@@ -1316,27 +1322,31 @@
                                                                         Arial,
                                                                         Helvetica,
                                                                         sans-serif;
-                                                                      font-size: 17px;
-                                                                      line-height: 20px;
+                                                                      font-size: 16px;
+                                                                      line-height: 180%;
                                                                       color: rgb(0,0,0);
+                                                                      padding-bottom:20px
                                                                     "
                                                                   >
-                                                                    <strong
-                                                                      >嘉宾介绍：</strong
-                                                                    ><br />
-                                                                    <br />
+                                                                    <span style="font-family: Microsoft YaHei,
+                                                                        Arial,
+                                                                        Helvetica,
+                                                                        sans-serif; color: rgb(0,0,0);font-size: 16px;"><strong
+                                                                      >嘉宾介绍：</strong>
+                                                                    </span><br />
+                                                                 
                                                                   </div>
                                                                   {{each guests}}
                                                                   <p style="margin-bottom:5px;">
                                                                     <strong
-                                                                      ><span style="color: rgb(0,0,0);">{{@$value.name}}</span></strong
+                                                                      ><span style="color: rgb(0,0,0);font-size: 16px;line-height: 180%;">{{@$value.name}}</span></strong
                                                                     ><strong
                                                                       >&nbsp;
-                                                                      <span style="color: rgb(0,0,0);">{{@$value.title}}</span></strong
+                                                                      <span style="color: rgb(0,0,0);font-size: 16px;line-height: 180%;">{{@$value.title}}</span></strong
                                                                     >
                                                                   </p>
                                                                   <p style="color: rgb(0,0,0);">
-                                                                    <span style="color: rgb(0,0,0);">{{@$value.introduction}}</span>
+                                                                    <span style="color: rgb(0,0,0);font-size: 16px;line-height: 180%;">{{@$value.introduction}}</span>
                                                                   </p>
                                                                   <p>
                                                                     <strong
@@ -2134,7 +2144,7 @@
                                                 class="sap-ms-wrap"
                                                 style="
                                                   font-family: 'Microsoft YaHei',
-                                                    Arial, Helvetica, sans-serif;
+                                                    Arial, Helvetica, sans-serif;line-height: 1.25;
                                                 "
                                                 >SAP中国，北京市朝阳区天泽路16号，润世中心3号楼10层，100125</span
                                               ><br />
@@ -2143,7 +2153,7 @@
                                                 class="sap-ms-wrap editableContextLink"
                                                 style="
                                                   font-family: 'Microsoft YaHei',
-                                                    Arial, Helvetica, sans-serif;
+                                                    Arial, Helvetica, sans-serif;line-height: 1.25;
                                                 "
                                                 >本邮件包含了您可能感兴趣的SAP产品或服务信息。如果您不希望再收到来自SAP的邮件，请<a
                                                   href="https://www.sap.cn/profile/unsubscribe.html?subscriptionID=1B04CC77-4253-41A8-A7CD-0809D8E1C32A"
@@ -2151,7 +2161,7 @@
                                                   data-sap-hpa-ceimo-link-alias="UNSUBSCRIBE"
                                                   style="
                                                     text-decoration: none;
-                                                    color: #008ed2;
+                                                    color: #008ed2;line-height: 1.25;
                                                   "
                                                   >点击这里</a
                                                 >。</span
@@ -2161,14 +2171,14 @@
                                                 class="sap-ms-wrap"
                                                 style="
                                                   font-family: 'Microsoft YaHei',
-                                                    Arial, Helvetica, sans-serif;
+                                                    Arial, Helvetica, sans-serif;line-height: 1.25;
                                                 "
-                                                >为了确保您能够持续收到并正确阅读SAP为您准备的精彩资讯，我们建议您将<a
+                                                >为确保您能够持续收到并正确阅读SAP为您准备的精彩资讯，我们建议您将<a
                                                   href="mailto:sap@mailsap.com"
                                                   data-sap-hpa-ceimo-link-alias="OTHER"
                                                   style="
                                                     text-decoration: none;
-                                                    color: #008ed2;
+                                                    color: #008ed2;line-height: 1.25;
                                                   "
                                                   >sap@mailsap.com</a
                                                 >

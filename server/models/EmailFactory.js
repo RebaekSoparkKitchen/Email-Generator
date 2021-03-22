@@ -4,22 +4,23 @@ import { render } from '@testing-library/react';
  * @Author: FlyingRedPig
  * @Date: 2021-03-14 16:39:33
  * @LastEditors: FlyingRedPig
- * @LastEditTime: 2021-03-19 19:29:08
+ * @LastEditTime: 2021-03-22 11:53:24
  */
 const fs = require('fs');
 const cheerio = require('cheerio');
 class EmailFactory {
   constructor(data) {
     this.data = data[0];
+    this.url = `https://events.sap.cn/home/meeting-register/${this.data.id}/`;
   }
 
   // 为报名的 url 加上参数
   urlProcess = (url, code) => {
-    return `${url}?pk_source=edminv&campaigncode=${code}`;
+    return `${url}?pk_source=edminv&pk_campaign=${code}&campaigncode=${code}`;
   };
 
   emailSubject = (subject) => {
-    return `【线上直播】${subject}`;
+    return `${subject}`;
   };
 
   // 将复杂的 object 转化为字符串的 guest
@@ -82,6 +83,7 @@ class EmailFactory {
   create = (team, qr) => {
     const email = {};
     const data = this.data;
+
     email.code = data.code;
     email.team = team;
     email.subject = this.emailSubject(data.title);
@@ -90,7 +92,8 @@ class EmailFactory {
     email.button = { text: '立即报名', color: 'black' };
     email.banner = data.banners[0].image_mobile;
     email.title = data.title;
-    email.meetingUrl = this.urlProcess(data.url, data.code);
+    email.meetingUrl = this.urlProcess(this.url, data.code);
+    console.log(email.meetingUrl);
     email.mainText = data.intro;
     email.schedule = [];
     data.agendas.forEach((value) => {
