@@ -3,19 +3,27 @@
  * @Author: FlyingRedPig
  * @Date: 2021-03-15 15:20:16
  * @LastEditors: FlyingRedPig
- * @LastEditTime: 2021-03-22 15:39:07
+ * @LastEditTime: 2021-03-23 11:13:56
  */
 const gulp = require('gulp');
 const juice = require('gulp-juice');
 const pangu = require('gulp-pangu');
 const cache = require('gulp-cached');
+const htmlmin = require('gulp-htmlmin');
 
 gulp.task('html', function () {
   return gulp
     .src('./origin_html/*.html')
     .pipe(cache())
     .pipe(pangu())
-    .pipe(juice())
+    .pipe(
+      juice({
+        webResources: {
+          images: false,
+        },
+      })
+    )
+    .pipe(htmlmin({ collapseWhitespace: true }))
     .pipe(gulp.dest('./dist/'));
 });
 
