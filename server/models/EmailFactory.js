@@ -4,7 +4,7 @@ import { render } from '@testing-library/react';
  * @Author: FlyingRedPig
  * @Date: 2021-03-14 16:39:33
  * @LastEditors: FlyingRedPig
- * @LastEditTime: 2021-03-22 17:48:29
+ * @LastEditTime: 2021-03-23 14:50:40
  */
 const fs = require('fs');
 const cheerio = require('cheerio');
@@ -77,9 +77,11 @@ class EmailFactory {
         $(this).css('padding-top', margin);
       }
     });
-    $('ol').css('padding', `${margin} 0px`);
+    const olWrapper = `<div style="margin: ${margin} 0"></div>`;
+    $('ol').wrap(olWrapper);
+    $('ul').wrap(olWrapper);
     $('ol').css('padding-left', `${left}`);
-    $('ul').css('padding', `${margin} 0px`);
+    $('ul').css('padding-left', `${left}`);
     return $.html();
   };
 
