@@ -762,16 +762,18 @@
                                                 /></b>
                                               </td>
                                             </tr>
+                                            {{set headerTextMargin = header.date ? '20px' : '10px'}}
                                             <tr>
-                                              <td height="20">
+                                              <td height="{{headerTextMargin}}">
                                                 <div
                                                   style="
                                                     width: 100%;
-                                                    height: 20px;
+                                                    height: {{headerTextMargin}};
                                                   "
                                                 ></div>
                                               </td>
                                             </tr>
+
                                           </tbody>
                                         </table>
                                         {{/if}}

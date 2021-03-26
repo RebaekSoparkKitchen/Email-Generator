@@ -4,7 +4,7 @@ import { render } from '@testing-library/react';
  * @Author: FlyingRedPig
  * @Date: 2021-03-14 16:39:33
  * @LastEditors: FlyingRedPig
- * @LastEditTime: 2021-03-23 14:50:40
+ * @LastEditTime: 2021-03-26 22:47:10
  */
 const fs = require('fs');
 const cheerio = require('cheerio');
@@ -74,7 +74,7 @@ class EmailFactory {
     $('p').each(function (i, ele) {
       const prevNode = $(this).prev()[0];
       if (prevNode && prevNode.tagName == 'p') {
-        $(this).css('padding-top', margin);
+        $(this).css('margin-top', margin);
       }
     });
     const olWrapper = `<div style="margin: ${margin} 0"></div>`;
@@ -85,16 +85,22 @@ class EmailFactory {
     return $.html();
   };
 
+  // 去除所有字符串中数字前面的0
+  dateProcess = (str) => {
+    return str.replace(/\d+(\.\d+)?/g, (str) => ~~str);
+  };
+
   create = (team, qr) => {
     const email = {};
     const data = this.data;
-
+    data.date = this.dateProcess(data.date);
+    email.id = data.id;
     email.code = data.code;
     email.team = team;
     email.subject = this.emailSubject(data.title);
     email.meetingTime = `${data.date} ${data.start_time} - ${data.end_time}`;
-    email.header = {};
-    email.button = { text: '立即报名', color: 'black' };
+    email.header = { text: data.title };
+    email.button = { text: '立即报名', color: 'blue' };
     email.banner = data.banners[0].image_mobile;
     email.title = data.title;
     email.meetingUrl = this.urlProcess(this.url, data.code);
@@ -108,5 +114,4 @@ class EmailFactory {
     return email;
   };
 }
-
 module.exports = EmailFactory;

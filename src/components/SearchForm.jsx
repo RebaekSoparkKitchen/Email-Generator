@@ -43,10 +43,8 @@ function SearchForm(props) {
           <div className={classes.urlBox}>
             <UrlBox handleChange={props.handleUrlBox} />
           </div>
-          <div>
-            <div className={classes.button}>
-              <Button name={'search'} handleClick={props.handleSearch} />
-            </div>
+          <div className={classes.button}>
+            <Button name={'search'} handleClick={props.handleSearch} />
           </div>
         </div>
       </Paper>

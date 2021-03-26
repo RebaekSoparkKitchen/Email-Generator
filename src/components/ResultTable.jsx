@@ -21,6 +21,10 @@ export default function ResultTable(props) {
       <Table className={classes.table} aria-label="spanning table">
         <TableBody>
           <TableRow>
+            <TableCell width="30%">ID</TableCell>
+            <TableCell align="left">{props.data.id}</TableCell>
+          </TableRow>
+          <TableRow>
             <TableCell width="30%">Email Name</TableCell>
             <TableCell align="left">{props.data.title}</TableCell>
           </TableRow>

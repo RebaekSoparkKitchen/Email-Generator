@@ -37,7 +37,18 @@ export default function ButtonAppBar() {
           <Typography variant="h6" className={classes.title}>
             Email Generator
           </Typography>
-          <Button color="inherit">Login</Button>
+          <Button className={classes.menuButton} color="inherit">
+            Login
+          </Button>
+          <Button
+            className={classes.menuButton}
+            variant="contained"
+            color="secondary"
+            href="https://my300723.s4hana.ondemand.com/ui#MarketingContent-showList"
+            target="_blank"
+          >
+            Content Studio
+          </Button>
         </Toolbar>
       </AppBar>
     </div>
